@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <title>Portafolio | Estudiante de Desarrollo de Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div class="code-rain"></div>
+    <div id="particles"></div>
+    
+    <!-- Navegación -->
+    <nav class="fixed w-full bg-gray-900/80 backdrop-blur-md z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl md:text-3xl font-bold text-blue-400 code-font">My portfolio</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-blue-400 transition">Sobre mí</a>
+                <a href="#education" class="hover:text-blue-400 transition">Educación</a>
+                <a href="#skills" class="hover:text-blue-400 transition">Habilidades</a>
+                <a href="#contact" class="hover:text-blue-400 transition">Contacto</a>
+            </div>
+            <button class="md:hidden focus:outline-none" id="menuBtn">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Menú móvil -->
+        <div class="md:hidden hidden bg-gray-900/90 backdrop-blur-md" id="mobileMenu">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#about" class="hover:text-blue-400 transition">Sobre mí</a>
+                <a href="#education" class="hover:text-blue-400 transition">Educación</a>
+                <a href="#skills" class="hover:text-blue-400 transition">Habilidades</a>
+                <a href="#contact" class="hover:text-blue-400 transition">Contacto</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Scroll indicator -->
+    <div class="fixed right-8 bottom-8 z-50 hidden md:block">
+        <div class="relative h-16 w-8 mx-auto">
+            <div class="absolute inset-0 border-2 border-blue-400 rounded-full opacity-60"></div>
+            <div class="absolute top-2 left-1/2 w-1 h-4 bg-blue-400 rounded-full -translate-x-1/2 animate-scroll-indicator"></div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="min-h-screen flex items-center pt-20 px-4 sm:px-6">
+        <div class="container mx-auto flex flex-col lg:flex-row items-center">
+            <div class="w-full lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
+                <div class="typewriter mb-6">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6">Hola, soy <span class="text-blue-400">Arley Rozo</span></h1>
+                </div>
+                <p class="text-xl text-gray-300 mb-8 max-w-lg">
+                    Apasionado por crear soluciones innovadoras mientras me formo en dos instituciones de prestigio.
+                </p>
+                <div class="flex space-x-4 justify-center md:justify-start">
+                    <a href="#contact" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-md font-medium transition">Contactarme</a>
+                    <a href="#education" class="px-6 py-3 border border-blue-400 text-blue-400 hover:bg-blue-900/30 rounded-md font-medium transition">Mi Educación</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <div class="code-game bg-gray-800 rounded-xl p-4 sm:p-6 shadow-2xl w-full max-w-md mx-auto">
+                        <div class="flex space-x-2 mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="code-display text-gray-400 mb-4">
+                            <pre id="codeSample">function greet() {
+  const name = "Visitante";
+  return `Hola, bienvenido a mi portafolio!`;
+}</pre>
+                        </div>
+                        <div class="code-input bg-gray-900 p-4 rounded-md relative">
+                            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                            <input type="text" placeholder="Escribe aquí..." class="w-full bg-transparent pl-6 focus:outline-none text-green-400" id="codeInput">
+                            <div class="cursor absolute right-4 top-1/2 transform -translate-y-1/2" id="cursor"></div>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-500 hidden" id="gameFeedback"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sobre Mí -->
+    <section id="about" class="py-12 md:py-20 bg-gray-900/50 backdrop-blur-sm">
+        <div class="container mx-auto px-4 sm:px-6 rounded-md">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                <span class="border-b-4 border-blue-500 pb-2">Sobre Mí</span>
+            </h2>
+            <div class="flex flex-col md:flex-row items-center gap-12 rounded-md">
+                <div class="md:w-1/3 rounded-md">
+                    <img src="./img/ing.sistemas.jpg" alt="Joven estudiante de desarrollo de software" class="rounded-md shadow-xl w-full" />
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4">Apasionado por el desarrollo de software</h3>
+                    <p class="text-gray-300 mb-6">
+                        Soy un estudiante dedicado de desarrollo de software, actualmente ampliando mis conocimientos en dos instituciones reconocidas: Campusland y INPROSISTEMAS. Esta doble formación me permite tener una visión más amplia y diversa del mundo del desarrollo de software.
+                    </p>
+                    <p class="text-gray-300 mb-6">
+                        Mi enfoque actual es adquirir una base sólida en principios fundamentales de programación mientras exploro tecnologías modernas. Disfruto resolviendo problemas complejos y convirtiendo ideas en soluciones funcionales.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-900/50 rounded-full flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Full Stack</h4>
+                                <p class="text-sm text-gray-400">En formación</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-900/50 rounded-full flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Doble Formación</h4>
+                                <p class="text-sm text-gray-400">Inprosistemas & Campusland</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Educación -->
+    <section id="education" class="py-20">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 sm:mb-16">
+                <span class="border-b-4 border-blue-500 pb-2">Mi Educación</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+                <!-- Campusland -->
+                <div class="education-card">
+                    <div class="card-inner h-full">
+                        <div class="card-front h-full bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700 hover:border-blue-500 transform hover:-translate-y-1">
+                            <div class="flex items-start mb-4">
+                                <img src="./img/campusland.jpeg" alt="Logo de Campusland institución educativa de tecnología" class="w-16 h-16 object-contain mr-4" />
+                                <div>
+                                    <h3 class="text-xl font-bold">Campusland</h3>
+                                    <p class="text-blue-400">Estudiante de Desarrollo de Software</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-4">
+                                Formación intensiva en desarrollo de software con metodología bootcamp, enfocada en tecnologías modernas y proyectos prácticos.
+                            </p>
+                            <div class="mt-auto">
+                                <span class="inline-block bg-blue-900/50 text-blue-400 px-3 py-1 rounded-full text-sm">2025 - Presente</span>
+                            </div>
+                        </div>
+                        <div class="card-back absolute inset-0 bg-gray-800 rounded-xl p-6 shadow-lg border border-blue-500 flex flex-col justify-center">
+                            <h4 class="text-xl font-bold mb-4 text-center">Enfoque académico</h4>
+                            <ul class="space-y-2 text-gray-300">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-blue-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Programación Full Stack</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-blue-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Metodologías ágiles</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-blue-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Proyectos colaborativos</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-blue-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Preparación para el mundo laboral</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- INPROSISTEMAS -->
+                <div class="education-card">
+                    <div class="card-inner h-full">
+                        <div class="card-front h-full bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition border border-gray-700">
+                            <div class="flex items-start mb-4">
+                                <img src="./img/inprosistemas.png" alt="Logo de INPROSISTEMAS institución educativa de tecnología" class="w-12 h-12 object-contain mr-4" />
+                                <div>
+                                    <h3 class="text-xl font-bold">Inprosistemas</h3>
+                                    <p class="text-blue-400">Estudiante de Desarrollo de Software</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-4">
+                                Programa académico estructurado que combina fundamentos teóricos con aplicación práctica, construyendo una base sólida en ciencias de la computación.
+                            </p>
+                            <div class="mt-auto">
+                                <span class="inline-block bg-blue-900/50 text-blue-400 px-3 py-1 rounded-full text-sm">2025 - Presente</span>
+                            </div>
+                        </div>
+                        <div class="card-back absolute inset-0 bg-gray-800 rounded-xl p-6 shadow-lg border border-blue-500 flex flex-col justify-center">
+                            <h4 class="text-xl font-bold mb-4 text-center">Enfoque académico</h4>
+                            <ul class="space-y-2 text-gray-300">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-blue-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Fundamentos de programación</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-blue-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Estructuras de datos</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-blue-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Bases de datos</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-blue-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Arquitectura de software</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 max-w-3xl mx-auto bg-gray-800/70 backdrop-blur-sm rounded-xl p-8 border border-gray-700">
+                <div class="flex items-start">
+                    <div class="text-blue-400 mr-4 mt-1">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Doble Programa Académico</h3>
+                        <p class="text-gray-300">
+                            Combinar estas dos instituciones me permite integrar lo mejor de ambos enfoques: la intensidad práctica de Campusland con el rigor académico de INPROSISTEMAS. Esta formación dual está moldeando un perfil profesional completo, preparado para los desafíos del desarrollo de software moderno.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Habilidades -->
+    <section id="skills" class="py-20 bg-gray-900/50 backdrop-blur-sm">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">
+                <span class="border-b-4 border-blue-500 pb-2">Mis Habilidades</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto px-4 sm:px-0">
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-center md:text-left">Tecnologías</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>HTML/CSS</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar relative group">
+                                <div class="skill-progress" style="width: 85%;" data-level="Avanzado"></div>
+                                <div class="absolute bottom-full mb-2 hidden group-hover:block bg-gray-800 text-white text-xs py-1 px-2 rounded whitespace-nowrap">
+                                    Avanzado - 85%
+                                    <div class="absolute left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>JavaScript</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Python</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>SQL</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-center md:text-left">Soft Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Trabajo en equipo</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Resolución de problemas</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Gestión del tiempo</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Aprendizaje continuo</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 max-w-3xl mx-auto">
+                <h3 class="text-xl font-bold mb-6 text-center">Proyectos Destacados</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-gray-800 rounded-xl p-6 hover:border-blue-500 border border-gray-700 transition hover:-translate-y-1">
+                        <div class="w-full h-48 mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                            <img src="./img/luxtime.png" alt="Interfaz de aplicación web moderna con dashboard de datos y gráficos" class="w-full h-full object-cover" />
+                        </div>
+                        <h4 class="font-bold mb-2">Pagina de venta de Relojes</h4>
+                        <p class="text-gray-400 text-sm mb-3">Plataforma web para ventas de relojes lujosos</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-blue-900/50 text-blue-400 px-3 py-1 rounded-full">HTML</span>
+                            <span class="text-xs bg-blue-900/50 text-blue-400 px-3 py-1 rounded-full">CSS</span>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-xl p-6 hover:border-blue-500 border border-gray-700 transition hover:-translate-y-1">
+                        <div class="w-full h-40 mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                            <img src="./img/portafolio.png" alt="Aplicación móvil mostrando interfaz de lista de tareas con diseño minimalista" class="w-full h-full object-cover" />
+                        </div>
+                        <h4 class="font-bold mb-2">Portafolio Personal</h4>
+                        <p class="text-gray-400 text-sm mb-3">Pagina de Presentacion</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-blue-900/50 text-blue-400 px-3 py-1 rounded-full">HTML</span>
+                            <span class="text-xs bg-blue-900/50 text-blue-400 px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="text-xs bg-blue-900/50 text-blue-400 px-3 py-1 rounded-full">Css</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contacto -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">
+                <span class="border-b-4 border-blue-500 pb-2">Contacto</span>
+            </h2>
+            
+            <div class="flex flex-col md:flex-row gap-12 max-w-6xl mx-auto">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6">Envíame un mensaje</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2">Nombre</label>
+                            <input type="text" id="name" name="nombre" required class="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2">Correo</label>
+                            <input type="email" id="email" name="correo" required class="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2">Mensaje</label>
+                            <textarea id="message" name="mensaje" rows="5" required class="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"></textarea>
+                        </div>
+                        <button type="submit" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-md font-medium transition w-full">Enviar Mensaje</button>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-gray-800/70 backdrop-blur-sm rounded-xl p-8 h-full border border-gray-700">
+                        <h3 class="text-2xl font-bold mb-6">Información de contacto</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-blue-400 mr-4 mt-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Teléfono</h4>
+                                    <p class="text-gray-400">+57 314 328 2345</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-blue-400 mr-4 mt-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Correo</h4>
+                                    <p class="text-gray-400">arleyrodriguez280@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-blue-400 mr-4 mt-1">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Ubicación</h4>
+                                    <p class="text-gray-400">Colombia</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="font-bold mb-4">Sígueme</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.linkedin.com/in/estudiante-backen-arley-rozo" class="w-10 h-10 bg-blue-900/50 rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-800 transition">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://github.com/Arleyrozo27" class="w-10 h-10 bg-blue-900/50 rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-800 transition">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-6 md:py-8 bg-gray-900/80 backdrop-blur-md border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center mb-4">
+                <div class="text-2xl font-bold text-blue-400 code-font">MY_PORTFOLIO</div>
+            </div>
+            <p class="text-gray-400 mb-6">"No hay lenguajes de programación, solo malos programadores"</p>
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#inicio" class="text-gray-400 hover:text-blue-400 transition">Inicio</a>
+                <a href="#about" class="text-gray-400 hover:text-blue-400 transition">Sobre mí</a>
+                <a href="#education" class="text-gray-400 hover:text-blue-400 transition">Educación</a>
+                <a href="#skills" class="text-gray-400 hover:text-blue-400 transition">Habilidades</a>
+                <a href="#contact" class="text-gray-400 hover:text-blue-400 transition">Contacto</a>
+            </div>
+            <p class="text-gray-500 text-sm">© 2025 Portafolio Estudiante Desarrollo de Software. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+
